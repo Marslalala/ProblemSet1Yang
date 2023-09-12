@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Yang Han">
+
+<title>Problem_Set_1_Yang</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Problem_Set_1_Yang_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Problem_Set_1_Yang_files/libs/quarto-html/quarto.js"></script>
+<script src="Problem_Set_1_Yang_files/libs/quarto-html/popper.min.js"></script>
+<script src="Problem_Set_1_Yang_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Problem_Set_1_Yang_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Problem_Set_1_Yang_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Problem_Set_1_Yang_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Problem_Set_1_Yang_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Problem_Set_1_Yang_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Problem_Set_1_Yang_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+<link href="Problem_Set_1_Yang_files/libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="Problem_Set_1_Yang_files/libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Problem_Set_1_Yang</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Yang Han </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="question-1" class="level1">
+<h1>Question 1</h1>
+<section id="part-a" class="level2">
+<h2 class="anchored" data-anchor-id="part-a">Part a</h2>
+<p>Import the data as data.frame</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>wine_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'wine.data'</span>, <span class="at">header =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Column names setting</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Col_name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Class'</span>, <span class="st">'Alcohol'</span>, <span class="st">'Malic acid'</span>, <span class="st">'Ash'</span>, <span class="st">'Alcalinity of ash'</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>              <span class="st">'Magnesium'</span>, <span class="st">'Total phenols'</span>, <span class="st">'Flavanoids'</span>, <span class="st">'Nonflavanoid phenols'</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">'Proanthocyanins'</span>, <span class="st">'Color intensity'</span>, <span class="st">'Hue'</span>, <span class="st">'OD280/OD315 of diluted wines'</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">'Proline'</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(wine_data) <span class="ot">&lt;-</span> Col_name</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(wine_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Class"                        "Alcohol"                     
+ [3] "Malic acid"                   "Ash"                         
+ [5] "Alcalinity of ash"            "Magnesium"                   
+ [7] "Total phenols"                "Flavanoids"                  
+ [9] "Nonflavanoid phenols"         "Proanthocyanins"             
+[11] "Color intensity"              "Hue"                         
+[13] "OD280/OD315 of diluted wines" "Proline"                     </code></pre>
+</div>
+</div>
+</section>
+<section id="part-b" class="level2">
+<h2 class="anchored" data-anchor-id="part-b">Part b</h2>
+<p>Number of wines checked in each of 3 classes</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(wine_data<span class="sc">$</span>Class <span class="sc">==</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 59</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(wine_data<span class="sc">$</span>Class <span class="sc">==</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 71</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(wine_data<span class="sc">$</span>Class <span class="sc">==</span> <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 48</code></pre>
+</div>
+</div>
+<p>Class distribution in “wine.names”: Class 1: 59; Class 2: 71; Class 3: 48</p>
+</section>
+<section id="part-c" class="level2">
+<h2 class="anchored" data-anchor-id="part-c">Part c</h2>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section">1.</h3>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>max_alc <span class="ot">&lt;-</span> <span class="fu">max</span>(wine_data<span class="sc">$</span>Alcohol)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Check the uniqueness of the wine with the highest alcohol content</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(wine_data<span class="sc">$</span>Alcohol <span class="sc">==</span> max_alc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>wine_data[wine_data<span class="sc">$</span>Alcohol <span class="sc">==</span> max_alc, ][, <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<p>The wine with the highest alcohol content belongs to class 1</p>
+</section>
+<section id="section-1" class="level3">
+<h3 class="anchored" data-anchor-id="section-1">2.</h3>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>min_alc <span class="ot">&lt;-</span> <span class="fu">min</span>(wine_data<span class="sc">$</span>Alcohol)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Check the uniqueness of the wine with the lowest alcohol content</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(wine_data<span class="sc">$</span>Alcohol <span class="sc">==</span> min_alc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>wine_data[wine_data<span class="sc">$</span>Alcohol <span class="sc">==</span> min_alc, ][, <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<p>The wine with the lowest alcohol content belongs to class 2</p>
+</section>
+<section id="section-2" class="level3">
+<h3 class="anchored" data-anchor-id="section-2">3.</h3>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Beer_mag <span class="ot">&lt;-</span> <span class="dv">114</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(wine_data<span class="sc">$</span>Magnesium <span class="sc">&gt;</span> Beer_mag))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 26</code></pre>
+</div>
+</div>
+<p>There are 26 wines with levels of magnesium higher than that</p>
+</section>
+<section id="section-3" class="level3">
+<h3 class="anchored" data-anchor-id="section-3">4.</h3>
+<p>Separate all 3 classes</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>class_1 <span class="ot">&lt;-</span> <span class="fu">subset</span>(wine_data, wine_data<span class="sc">$</span>Class <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>class_2 <span class="ot">&lt;-</span> <span class="fu">subset</span>(wine_data, wine_data<span class="sc">$</span>Class <span class="sc">==</span> <span class="dv">2</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>class_3 <span class="ot">&lt;-</span> <span class="fu">subset</span>(wine_data, wine_data<span class="sc">$</span>Class <span class="sc">==</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Then get the values</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(class_1<span class="sc">$</span>Magnesium <span class="sc">&gt;</span> Beer_mag))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(class_2<span class="sc">$</span>Magnesium <span class="sc">&gt;</span> Beer_mag))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(class_3<span class="sc">$</span>Magnesium <span class="sc">&gt;</span> Beer_mag))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<p>There are 15 wines in class 1 with levels of magnesium higher than German beers, 6 for class 2 and 5 for class 3</p>
+</section>
+</section>
+<section id="part-d" class="level2">
+<h2 class="anchored" data-anchor-id="part-d">Part d</h2>
+<p>Calculate the overall average</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>ov_avg <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">mean</span>(wine_data<span class="sc">$</span>Alcohol), <span class="fu">mean</span>(wine_data<span class="sc">$</span><span class="st">`</span><span class="at">Malic acid</span><span class="st">`</span>), </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(wine_data<span class="sc">$</span>Ash), <span class="fu">mean</span>(wine_data<span class="sc">$</span><span class="st">`</span><span class="at">Alcalinity of ash</span><span class="st">`</span>),</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(wine_data<span class="sc">$</span>Magnesium), <span class="fu">mean</span>(wine_data<span class="sc">$</span><span class="st">`</span><span class="at">Total phenols</span><span class="st">`</span>),</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(wine_data<span class="sc">$</span>Flavanoids), <span class="fu">mean</span>(wine_data<span class="sc">$</span><span class="st">`</span><span class="at">Nonflavanoid phenols</span><span class="st">`</span>),</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(wine_data<span class="sc">$</span>Proanthocyanins), <span class="fu">mean</span>(wine_data<span class="sc">$</span><span class="st">`</span><span class="at">Color intensity</span><span class="st">`</span>),</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(wine_data<span class="sc">$</span>Hue), <span class="fu">mean</span>(wine_data<span class="sc">$</span><span class="st">`</span><span class="at">OD280/OD315 of diluted wines</span><span class="st">`</span>),</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(wine_data<span class="sc">$</span>Proline))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Calculate the average for each class</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>c1_avg <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">mean</span>(class_1<span class="sc">$</span>Alcohol), <span class="fu">mean</span>(class_1<span class="sc">$</span><span class="st">`</span><span class="at">Malic acid</span><span class="st">`</span>), </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_1<span class="sc">$</span>Ash), <span class="fu">mean</span>(class_1<span class="sc">$</span><span class="st">`</span><span class="at">Alcalinity of ash</span><span class="st">`</span>),</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_1<span class="sc">$</span>Magnesium), <span class="fu">mean</span>(class_1<span class="sc">$</span><span class="st">`</span><span class="at">Total phenols</span><span class="st">`</span>),</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_1<span class="sc">$</span>Flavanoids), <span class="fu">mean</span>(class_1<span class="sc">$</span><span class="st">`</span><span class="at">Nonflavanoid phenols</span><span class="st">`</span>),</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_1<span class="sc">$</span>Proanthocyanins), <span class="fu">mean</span>(class_1<span class="sc">$</span><span class="st">`</span><span class="at">Color intensity</span><span class="st">`</span>),</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_1<span class="sc">$</span>Hue), <span class="fu">mean</span>(class_1<span class="sc">$</span><span class="st">`</span><span class="at">OD280/OD315 of diluted wines</span><span class="st">`</span>),</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_1<span class="sc">$</span>Proline))</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>c2_avg <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">mean</span>(class_2<span class="sc">$</span>Alcohol), <span class="fu">mean</span>(class_2<span class="sc">$</span><span class="st">`</span><span class="at">Malic acid</span><span class="st">`</span>), </span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_2<span class="sc">$</span>Ash), <span class="fu">mean</span>(class_2<span class="sc">$</span><span class="st">`</span><span class="at">Alcalinity of ash</span><span class="st">`</span>),</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_2<span class="sc">$</span>Magnesium), <span class="fu">mean</span>(class_2<span class="sc">$</span><span class="st">`</span><span class="at">Total phenols</span><span class="st">`</span>),</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_2<span class="sc">$</span>Flavanoids), <span class="fu">mean</span>(class_2<span class="sc">$</span><span class="st">`</span><span class="at">Nonflavanoid phenols</span><span class="st">`</span>),</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_2<span class="sc">$</span>Proanthocyanins), <span class="fu">mean</span>(class_2<span class="sc">$</span><span class="st">`</span><span class="at">Color intensity</span><span class="st">`</span>),</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_2<span class="sc">$</span>Hue), <span class="fu">mean</span>(class_2<span class="sc">$</span><span class="st">`</span><span class="at">OD280/OD315 of diluted wines</span><span class="st">`</span>),</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_2<span class="sc">$</span>Proline))</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>c3_avg <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">mean</span>(class_3<span class="sc">$</span>Alcohol), <span class="fu">mean</span>(class_3<span class="sc">$</span><span class="st">`</span><span class="at">Malic acid</span><span class="st">`</span>), </span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_3<span class="sc">$</span>Ash), <span class="fu">mean</span>(class_3<span class="sc">$</span><span class="st">`</span><span class="at">Alcalinity of ash</span><span class="st">`</span>),</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_3<span class="sc">$</span>Magnesium), <span class="fu">mean</span>(class_3<span class="sc">$</span><span class="st">`</span><span class="at">Total phenols</span><span class="st">`</span>),</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_3<span class="sc">$</span>Flavanoids), <span class="fu">mean</span>(class_3<span class="sc">$</span><span class="st">`</span><span class="at">Nonflavanoid phenols</span><span class="st">`</span>),</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_3<span class="sc">$</span>Proanthocyanins), <span class="fu">mean</span>(class_3<span class="sc">$</span><span class="st">`</span><span class="at">Color intensity</span><span class="st">`</span>),</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_3<span class="sc">$</span>Hue), <span class="fu">mean</span>(class_3<span class="sc">$</span><span class="st">`</span><span class="at">OD280/OD315 of diluted wines</span><span class="st">`</span>),</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mean</span>(class_3<span class="sc">$</span>Proline))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Then create a table</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>avg_tab <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">data.frame</span>(ov_avg, c1_avg, c2_avg, c3_avg))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Set the rows and columns names to make the table clear and then view the table</p>
+<div class="cell">
+<details open="">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(avg_tab) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Overall Average'</span>, <span class="st">'Average of Class 1'</span>, </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'Average of Class 2'</span>, <span class="st">'Average of Class 3'</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(avg_tab) <span class="ot">&lt;-</span> Col_name[<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>(<span class="fu">as.data.frame</span>(avg_tab))  <span class="co"># Method to show tables in quarto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Alcohol"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Malic acid"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Ash"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Alcalinity of ash"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Magnesium"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Total phenols"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Flavanoids"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["Nonflavanoid phenols"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["Proanthocyanins"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["Color intensity"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["Hue"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["OD280/OD315 of diluted wines"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["Proline"],"name":[13],"type":["dbl"],"align":["right"]}],"data":[{"1":"13.00062","2":"2.336348","3":"2.366517","4":"19.49494","5":"99.74157","6":"2.295112","7":"2.0292697","8":"0.3618539","9":"1.590899","10":"5.058090","11":"0.9574494","12":"2.611685","13":"746.8933","_rn_":"Overall Average"},{"1":"13.74475","2":"2.010678","3":"2.455593","4":"17.03729","5":"106.33898","6":"2.840169","7":"2.9823729","8":"0.2900000","9":"1.899322","10":"5.528305","11":"1.0620339","12":"3.157797","13":"1115.7119","_rn_":"Average of Class 1"},{"1":"12.27873","2":"1.932676","3":"2.244789","4":"20.23803","5":"94.54930","6":"2.258873","7":"2.0808451","8":"0.3636620","9":"1.630282","10":"3.086620","11":"1.0562817","12":"2.785352","13":"519.5070","_rn_":"Average of Class 2"},{"1":"13.15375","2":"3.333750","3":"2.437083","4":"21.41667","5":"99.31250","6":"1.678750","7":"0.7814583","8":"0.4475000","9":"1.153542","10":"7.396250","11":"0.6827083","12":"1.683542","13":"629.8958","_rn_":"Average of Class 3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="part-e" class="level2">
+<h2 class="anchored" data-anchor-id="part-e">Part e</h2>
+<p>Carry out a t-test between classes 1 &amp; 2</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(class_1<span class="sc">$</span>Ash, class_2<span class="sc">$</span>Ash)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  class_1$Ash and class_2$Ash
+t = 4.4184, df = 125.59, p-value = 2.124e-05
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.116383 0.305226
+sample estimates:
+mean of x mean of y 
+ 2.455593  2.244789 </code></pre>
+</div>
+</div>
+<p>The p-value is 2.124e-05, which means the result is statistically significant. Therefore, the null hypothesis, the level of Ash differs between two classes, should be rejected</p>
+<p>Carry out a t-test between classes 1 &amp; 3</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(class_1<span class="sc">$</span>Ash, class_3<span class="sc">$</span>Ash)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  class_1$Ash and class_3$Ash
+t = 0.46489, df = 105, p-value = 0.643
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.06043717  0.09745695
+sample estimates:
+mean of x mean of y 
+ 2.455593  2.437083 </code></pre>
+</div>
+</div>
+<p>The p-value is 0.643, which means the result is statistically insignificant. Therefore, the null hypothesis, the level of Ash differs between two classes, is true</p>
+<p>Carry out a t-test between class 2 &amp; 3</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(class_2<span class="sc">$</span>Ash, class_3<span class="sc">$</span>Ash)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  class_2$Ash and class_3$Ash
+t = -4.184, df = 114.96, p-value = 5.627e-05
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.2833328 -0.1012564
+sample estimates:
+mean of x mean of y 
+ 2.244789  2.437083 </code></pre>
+</div>
+</div>
+<p>The p-value is 5.627e-05, which means the result is statistically significant. Therefore, the null hypothesis, the level of Ash differs between two class, should be rejected.</p>
+</section>
+</section>
+<section id="question-2" class="level1">
+<h1>Question 2</h1>
+<section id="part-a-1" class="level2">
+<h2 class="anchored" data-anchor-id="part-a-1">Part a</h2>
+<p>Establish the function</p>
+<div class="cell">
+<details open="">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>isPerfectPower <span class="ot">&lt;-</span> <span class="cf">function</span>(n, p){</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#input: n - an integer, the number to check</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#input: p - an integer, the specified power</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Define the root </span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (p <span class="sc">&lt;</span> <span class="dv">2</span>){</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">'p must be an integer greater than 1'</span>)</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">&amp;&amp;</span> p <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">isPerfect =</span> <span class="cn">FALSE</span>, <span class="at">root =</span> <span class="fu">paste</span>(n, <span class="st">'is not a perfect power of'</span>, p)))</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (n <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    r <span class="ot">&lt;-</span> <span class="sc">-</span>((<span class="sc">-</span>n)<span class="sc">^</span>(<span class="dv">1</span> <span class="sc">/</span> p))</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (n <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">isPerfect =</span> <span class="cn">TRUE</span>, <span class="at">root =</span> <span class="dv">0</span>))</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>    r <span class="ot">&lt;-</span> n<span class="sc">^</span>(<span class="dv">1</span> <span class="sc">/</span> p)</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>  tol <span class="ot">&lt;-</span> <span class="fl">1e-10</span>    <span class="co"># Set a tolerance to deal with floating power double numeric precision</span></span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(n <span class="sc">%%</span> <span class="dv">1</span> <span class="sc">!=</span> <span class="dv">0</span> <span class="sc">|</span> p <span class="sc">%%</span> <span class="dv">1</span> <span class="sc">!=</span> <span class="dv">0</span>){  <span class="co"># Check if n and p are integers</span></span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">isPerfect =</span> <span class="cn">FALSE</span>, <span class="at">wrongArgument =</span> <span class="st">'Please enter integers for arguments'</span>))</span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">-</span>tol <span class="sc">&lt;</span> n <span class="sc">%%</span> r <span class="sc">&amp;&amp;</span> n <span class="sc">%%</span> r <span class="sc">&lt;</span> tol){  <span class="co"># Set the checking conditions and check</span></span>
+<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">isPerfect =</span> <span class="cn">TRUE</span>, <span class="at">root =</span> r))</span>
+<span id="cb39-26"><a href="#cb39-26" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb39-27"><a href="#cb39-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">isPerfect =</span> <span class="cn">FALSE</span>, <span class="at">root =</span> <span class="fu">paste</span>(n, <span class="st">'is not a perfect power of'</span>, p)))</span>
+<span id="cb39-28"><a href="#cb39-28" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb39-29"><a href="#cb39-29" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="part-b-1" class="level2">
+<h2 class="anchored" data-anchor-id="part-b-1">Part b</h2>
+<p>Establish the function</p>
+<div class="cell">
+<details open="">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>findRootPower <span class="ot">&lt;-</span> <span class="cf">function</span>(n){</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#input: n - an integer, the number to check</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(n <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">paste</span>(n, <span class="st">'='</span>, <span class="dv">0</span>, <span class="st">'^'</span>, <span class="dv">2</span>))</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  high_p <span class="ot">&lt;-</span> <span class="dv">70</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>  r_vec <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  p_vec <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>high_p){    <span class="co"># Start from 2 since when power = 1, n itself is a perfect power</span></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">isPerfectPower</span>(n, i)<span class="sc">$</span>isPerfect){</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>      r_vec <span class="ot">&lt;-</span> <span class="fu">append</span>(r_vec, <span class="fu">isPerfectPower</span>(n, i)<span class="sc">$</span>root)</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>      p_vec <span class="ot">&lt;-</span> <span class="fu">append</span>(p_vec, i)</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.null</span>(p_vec)){</span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">paste</span>(n, <span class="st">'is not a perfect power'</span>))</span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>    r <span class="ot">&lt;-</span> <span class="fu">max</span>(r_vec)</span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">&lt;-</span> <span class="fu">min</span>(p_vec)</span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">paste</span>(n, <span class="st">'='</span>, r, <span class="st">'^'</span>, p))</span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Carry out the test cases:</p>
+<div class="cell">
+<details open="">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">findRootPower</span>(<span class="dv">27</span>)               <span class="co"># Perfect power; root = 3, power = 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "27 = 3 ^ 3"</code></pre>
+</div>
+<details open="">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">findRootPower</span>(<span class="dv">13060694016</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "13060694016 is not a perfect power"</code></pre>
+</div>
+<details open="">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">findRootPower</span>(<span class="dv">7776</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "7776 is not a perfect power"</code></pre>
+</div>
+<details open="">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">findRootPower</span>(<span class="dv">170859375</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "170859375 is not a perfect power"</code></pre>
+</div>
+<details open="">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">findRootPower</span>(<span class="dv">58247422</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "58247422 is not a perfect power"</code></pre>
+</div>
+<details open="">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">findRootPower</span>(<span class="dv">94143178827</span>)      <span class="co"># Perfect power; root = 3, power = 23</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "94143178827 = 3 ^ 23"</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="question-3" class="level1">
+<h1>Question 3</h1>
+<section id="part-a-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-a-2">Part a</h2>
+<p><strong>The output by ChatGPT:</strong></p>
+<p>Here are two R functions, one for identifying the name of a 5-card stud poker hand, and the other for simulating a round of poker with a specified number of players:</p>
+<div class="cell">
+<details open="">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  Function to identify the name of a 5-card stud poker hand</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>identify_poker_hand <span class="ot">&lt;-</span> <span class="cf">function</span>(suits, ranks) {</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for a flush</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  is_flush <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(suits)) <span class="sc">==</span> <span class="dv">1</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for a straight</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>  is_straight <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(ranks)) <span class="sc">==</span> <span class="dv">5</span> <span class="sc">&amp;&amp;</span> (<span class="fu">max</span>(ranks) <span class="sc">-</span> <span class="fu">min</span>(ranks)) <span class="sc">==</span> <span class="dv">4</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for pairs, three of a kind, and four of a kind</span></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>  rank_counts <span class="ot">&lt;-</span> <span class="fu">table</span>(ranks)</span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>  has_pair <span class="ot">&lt;-</span> <span class="fu">any</span>(rank_counts <span class="sc">==</span> <span class="dv">2</span>)</span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>  has_three_of_a_kind <span class="ot">&lt;-</span> <span class="fu">any</span>(rank_counts <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>  has_four_of_a_kind <span class="ot">&lt;-</span> <span class="fu">any</span>(rank_counts <span class="sc">==</span> <span class="dv">4</span>)</span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Determine the hand name</span></span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (is_flush <span class="sc">&amp;&amp;</span> is_straight) {</span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Straight Flush"</span>)</span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (has_four_of_a_kind) {</span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Four of a Kind"</span>)</span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (has_three_of_a_kind <span class="sc">&amp;&amp;</span> has_pair) {</span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Full House"</span>)</span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (is_flush) {</span>
+<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Flush"</span>)</span>
+<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (is_straight) {</span>
+<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Straight"</span>)</span>
+<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (has_three_of_a_kind) {</span>
+<span id="cb53-27"><a href="#cb53-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Three of a Kind"</span>)</span>
+<span id="cb53-28"><a href="#cb53-28" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">sum</span>(rank_counts <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">==</span> <span class="dv">2</span>) {</span>
+<span id="cb53-29"><a href="#cb53-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Two Pair"</span>)</span>
+<span id="cb53-30"><a href="#cb53-30" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (has_pair) {</span>
+<span id="cb53-31"><a href="#cb53-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"One Pair"</span>)</span>
+<span id="cb53-32"><a href="#cb53-32" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb53-33"><a href="#cb53-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"High Card"</span>)</span>
+<span id="cb53-34"><a href="#cb53-34" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb53-35"><a href="#cb53-35" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>deal_poker_round <span class="ot">&lt;-</span> <span class="cf">function</span>(num_players) {</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a deck of cards</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  suits <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Hearts"</span>, <span class="st">"Diamonds"</span>, <span class="st">"Clubs"</span>, <span class="st">"Spades"</span>), <span class="at">each =</span> <span class="dv">13</span>)</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  ranks <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">times =</span> <span class="dv">4</span>)</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  ranks <span class="ot">&lt;-</span> <span class="fu">c</span>(ranks, <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Jack"</span>, <span class="st">"Queen"</span>, <span class="st">"King"</span>, <span class="st">"Ace"</span>), <span class="at">each =</span> <span class="dv">4</span>))</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Shuffle the deck</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>  deck <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Suit =</span> suits, <span class="at">Rank =</span> ranks)</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>  deck <span class="ot">&lt;-</span> deck[<span class="fu">sample</span>(<span class="fu">nrow</span>(deck)), ]</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Deal cards to players</span></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>  player_hands <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="at">length =</span> num_players)</span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_players) {</span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>    start <span class="ot">&lt;-</span> (i <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>    end <span class="ot">&lt;-</span> i <span class="sc">*</span> <span class="dv">5</span></span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a>    player_hands[[i]] <span class="ot">&lt;-</span> deck[start<span class="sc">:</span>end, ]</span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Identify and display each player's hand</span></span>
+<span id="cb54-20"><a href="#cb54-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_players) {</span>
+<span id="cb54-21"><a href="#cb54-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"Player"</span>, i, <span class="st">"Hand:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb54-22"><a href="#cb54-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(player_hands[[i]])</span>
+<span id="cb54-23"><a href="#cb54-23" aria-hidden="true" tabindex="-1"></a>    hand_name <span class="ot">&lt;-</span> <span class="fu">identify_poker_hand</span>(player_hands[[i]]<span class="sc">$</span>Suit, </span>
+<span id="cb54-24"><a href="#cb54-24" aria-hidden="true" tabindex="-1"></a>                                     player_hands[[i]]<span class="sc">$</span>Rank)</span>
+<span id="cb54-25"><a href="#cb54-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"Hand Name:"</span>, hand_name, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb54-26"><a href="#cb54-26" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb54-27"><a href="#cb54-27" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Example usage: simulate a round of poker with 4 players. ()</p>
+<div class="cell">
+<details open="">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deal_poker_round</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Player 1 Hand:
+       Suit Rank
+7    Hearts    8
+17 Diamonds    9
+14 Diamonds    6
+15 Diamonds    7
+19 Diamonds    2</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in max(ranks) - min(ranks): 二进列运算符中有非数值参数</code></pre>
+</div>
+</div>
+<p>This code defines two functions: identify_poker_hand to identify the name of a 5-card stud poker hand, and deal_poker_round to simulate dealing a round of poker with a specified number of players. The example at the end demonstrates how to use the deal_poker_round function to simulate a round of poker with 4 players and display their hands along with their hand names.</p>
+</section>
+<section id="part-b-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-b-2">Part b</h2>
+<p>Check the first function with a range of inputs</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>test1_suits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Spades'</span>, <span class="st">'Spades'</span>, <span class="st">'Diamonds'</span>, <span class="st">'Clubs'</span>, <span class="st">'Hearts'</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>test1_ranks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="st">'Jack'</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>test2_suits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Spades'</span>, <span class="st">'Spades'</span>, <span class="st">'Spades'</span>, <span class="st">'Spades'</span>, <span class="st">'Spades'</span>)</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>test2_ranks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Ace'</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>test3_suits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Hearts'</span>, <span class="st">'Hearts'</span>, <span class="st">'Hearts'</span>, <span class="st">'Hearts'</span>, <span class="st">'Hearts'</span>)</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>test3_ranks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Jack'</span>, <span class="st">'Queen'</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">7</span>)</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>test4_suits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Diamonds'</span>, <span class="st">'Hearts'</span>, <span class="st">'Diamonds'</span>, <span class="st">'Clubs'</span>, <span class="st">'Hearts'</span>)</span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>test4_ranks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'King'</span>, <span class="st">'King'</span>, <span class="st">'King'</span>, <span class="st">'Ace'</span>, <span class="st">'Ace'</span>)</span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>test5_suits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Spades'</span>, <span class="st">'Clubs'</span>, <span class="st">'Spades'</span>, <span class="st">'Clubs'</span>, <span class="st">'Clubs'</span>)</span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>test5_ranks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">6</span>)</span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a><span class="fu">identify_poker_hand</span>(test1_suits, test1_ranks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Three of a Kind"</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identify_poker_hand</span>(test2_suits, test2_ranks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in max(ranks) - min(ranks): 二进列运算符中有非数值参数</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identify_poker_hand</span>(test3_suits, test3_ranks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Flush"</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identify_poker_hand</span>(test4_suits, test4_ranks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Full House"</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identify_poker_hand</span>(test5_suits, test5_ranks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Two Pair"</code></pre>
+</div>
+</div>
+<p>Check the second function with a range of inputs</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deal_poker_round</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Player 1 Hand:
+       Suit  Rank
+6    Hearts     7
+16 Diamonds     8
+44   Spades Queen
+30    Clubs     4
+32    Clubs     6</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in max(ranks) - min(ranks): 二进列运算符中有非数值参数</code></pre>
+</div>
+</div>
+<p>Give a range of inputs ,we can see that both functions occasionally return the same error:</p>
+<p>Error in max(ranks) - min(ranks) :</p>
+<p>non-numeric argument to binary operator</p>
+<p>It is quite clear. In functions max() and min(), only values with the same type, i.e all values are numeric or strings, can be operated. Since in our “rank” argument, values “Jack”, “Queen”, “King” and “Ace” are allowed, we cannot compare such strings with an integer. Hence, whenever a Straight comes out, the functions would report errors.</p>
+<p>Now fix the issue</p>
+<div class="cell">
+<details open="">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>identify_poker_hand <span class="ot">&lt;-</span> <span class="cf">function</span>(suits, ranks) {</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for a flush</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  is_flush <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(suits)) <span class="sc">==</span> <span class="dv">1</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for a straight         * Fixed</span></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="st">'Ace'</span> <span class="sc">%in%</span> ranks){         <span class="co"># Change all the strings to numbers</span></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>    ranks[ranks <span class="sc">==</span> <span class="st">'Ace'</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="st">'Jack'</span> <span class="sc">%in%</span> ranks){</span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>    ranks[ranks <span class="sc">==</span> <span class="st">'Jack'</span>] <span class="ot">&lt;-</span> <span class="dv">11</span></span>
+<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="st">'Queen'</span> <span class="sc">%in%</span> ranks){</span>
+<span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a>    ranks[ranks <span class="sc">==</span> <span class="st">'Queen'</span>] <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb71-14"><a href="#cb71-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb71-15"><a href="#cb71-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="st">'King'</span> <span class="sc">%in%</span> ranks){</span>
+<span id="cb71-16"><a href="#cb71-16" aria-hidden="true" tabindex="-1"></a>    ranks[ranks <span class="sc">==</span> <span class="st">'King'</span>] <span class="ot">&lt;-</span> <span class="dv">13</span></span>
+<span id="cb71-17"><a href="#cb71-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb71-18"><a href="#cb71-18" aria-hidden="true" tabindex="-1"></a>  ranks <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(ranks)    <span class="co"># Make ranks argument numerical then carry out the calculation</span></span>
+<span id="cb71-19"><a href="#cb71-19" aria-hidden="true" tabindex="-1"></a>  is_straight <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(ranks)) <span class="sc">==</span> <span class="dv">5</span> <span class="sc">&amp;&amp;</span> (<span class="fu">max</span>(ranks) <span class="sc">-</span> <span class="fu">min</span>(ranks)) <span class="sc">==</span> <span class="dv">4</span></span>
+<span id="cb71-20"><a href="#cb71-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb71-21"><a href="#cb71-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for pairs, three of a kind, and four of a kind</span></span>
+<span id="cb71-22"><a href="#cb71-22" aria-hidden="true" tabindex="-1"></a>  rank_counts <span class="ot">&lt;-</span> <span class="fu">table</span>(ranks)</span>
+<span id="cb71-23"><a href="#cb71-23" aria-hidden="true" tabindex="-1"></a>  has_pair <span class="ot">&lt;-</span> <span class="fu">any</span>(rank_counts <span class="sc">==</span> <span class="dv">2</span>)</span>
+<span id="cb71-24"><a href="#cb71-24" aria-hidden="true" tabindex="-1"></a>  has_three_of_a_kind <span class="ot">&lt;-</span> <span class="fu">any</span>(rank_counts <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="cb71-25"><a href="#cb71-25" aria-hidden="true" tabindex="-1"></a>  has_four_of_a_kind <span class="ot">&lt;-</span> <span class="fu">any</span>(rank_counts <span class="sc">==</span> <span class="dv">4</span>)</span>
+<span id="cb71-26"><a href="#cb71-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb71-27"><a href="#cb71-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Determine the hand name</span></span>
+<span id="cb71-28"><a href="#cb71-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (is_flush <span class="sc">&amp;&amp;</span> is_straight) {</span>
+<span id="cb71-29"><a href="#cb71-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Straight Flush"</span>)</span>
+<span id="cb71-30"><a href="#cb71-30" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (has_four_of_a_kind) {</span>
+<span id="cb71-31"><a href="#cb71-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Four of a Kind"</span>)</span>
+<span id="cb71-32"><a href="#cb71-32" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (has_three_of_a_kind <span class="sc">&amp;&amp;</span> has_pair) {</span>
+<span id="cb71-33"><a href="#cb71-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Full House"</span>)</span>
+<span id="cb71-34"><a href="#cb71-34" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (is_flush) {</span>
+<span id="cb71-35"><a href="#cb71-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Flush"</span>)</span>
+<span id="cb71-36"><a href="#cb71-36" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (is_straight) {</span>
+<span id="cb71-37"><a href="#cb71-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Straight"</span>)</span>
+<span id="cb71-38"><a href="#cb71-38" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (has_three_of_a_kind) {</span>
+<span id="cb71-39"><a href="#cb71-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Three of a Kind"</span>)</span>
+<span id="cb71-40"><a href="#cb71-40" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">sum</span>(rank_counts <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">==</span> <span class="dv">2</span>) {</span>
+<span id="cb71-41"><a href="#cb71-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Two Pair"</span>)</span>
+<span id="cb71-42"><a href="#cb71-42" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (has_pair) {</span>
+<span id="cb71-43"><a href="#cb71-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"One Pair"</span>)</span>
+<span id="cb71-44"><a href="#cb71-44" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb71-45"><a href="#cb71-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"High Card"</span>)</span>
+<span id="cb71-46"><a href="#cb71-46" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb71-47"><a href="#cb71-47" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The code now runs without any errors but it still cannot produce accurate results when these ranks are given: 10, “Jack”, “Queen”, “King”, “Ace”.</p>
+</section>
+<section id="part-c-1" class="level2">
+<h2 class="anchored" data-anchor-id="part-c-1">Part c</h2>
+<p>Explain the code line-by-line</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  Function to identify the name of a 5-card stud poker hand</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>identify_poker_hand <span class="ot">&lt;-</span> <span class="cf">function</span>(suits, ranks) {</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for a flush; unique() returns a vector that drops all repeated values in</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the argument given length() returns a numerical value which is the number of</span></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># elements in the argument given, so the code means that is_flush is true if the</span></span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># unique elements in "suits" is 1.</span></span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>  is_flush <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(suits)) <span class="sc">==</span> <span class="dv">1</span>           </span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="st">'Ace'</span> <span class="sc">%in%</span> ranks){</span>
+<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Change character "Ace" to numerical value 1; x %in% y means element x is in </span></span>
+<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># the vector y</span></span>
+<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a>    ranks[ranks <span class="sc">==</span> <span class="st">'Ace'</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb72-14"><a href="#cb72-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Replace the element "Ace" with 1 if "Ace" is in ranks</span></span>
+<span id="cb72-15"><a href="#cb72-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb72-16"><a href="#cb72-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="st">'Jack'</span> <span class="sc">%in%</span> ranks){         </span>
+<span id="cb72-17"><a href="#cb72-17" aria-hidden="true" tabindex="-1"></a>    ranks[ranks <span class="sc">==</span> <span class="st">'Jack'</span>] <span class="ot">&lt;-</span> <span class="dv">11</span>       </span>
+<span id="cb72-18"><a href="#cb72-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Change character "Jack" to numerical value 11 </span></span>
+<span id="cb72-19"><a href="#cb72-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Replace the element "Jack" with 11 if "Jack" is in ranks</span></span>
+<span id="cb72-20"><a href="#cb72-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb72-21"><a href="#cb72-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="st">'Queen'</span> <span class="sc">%in%</span> ranks){        </span>
+<span id="cb72-22"><a href="#cb72-22" aria-hidden="true" tabindex="-1"></a>    ranks[ranks <span class="sc">==</span> <span class="st">'Queen'</span>] <span class="ot">&lt;-</span> <span class="dv">12</span> </span>
+<span id="cb72-23"><a href="#cb72-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Change character "Queen" to numerical value 12 </span></span>
+<span id="cb72-24"><a href="#cb72-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Replace the element "Queen" with 12 if "Queen" is in ranks</span></span>
+<span id="cb72-25"><a href="#cb72-25" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb72-26"><a href="#cb72-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="st">'King'</span> <span class="sc">%in%</span> ranks){         </span>
+<span id="cb72-27"><a href="#cb72-27" aria-hidden="true" tabindex="-1"></a>    ranks[ranks <span class="sc">==</span> <span class="st">'King'</span>] <span class="ot">&lt;-</span> <span class="dv">13</span>  </span>
+<span id="cb72-28"><a href="#cb72-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Change character "King" to numerical value 13</span></span>
+<span id="cb72-29"><a href="#cb72-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Replace the element "King" with 13 if "King" is in ranks</span></span>
+<span id="cb72-30"><a href="#cb72-30" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb72-31"><a href="#cb72-31" aria-hidden="true" tabindex="-1"></a>  ranks <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(ranks)      </span>
+<span id="cb72-32"><a href="#cb72-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Make ranks argument as numeric to carry out the calculation below</span></span>
+<span id="cb72-33"><a href="#cb72-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-34"><a href="#cb72-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for a straight</span></span>
+<span id="cb72-35"><a href="#cb72-35" aria-hidden="true" tabindex="-1"></a>  is_straight <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(ranks)) <span class="sc">==</span> <span class="dv">5</span> <span class="sc">&amp;&amp;</span> (<span class="fu">max</span>(ranks) <span class="sc">-</span> <span class="fu">min</span>(ranks)) <span class="sc">==</span> <span class="dv">4</span></span>
+<span id="cb72-36"><a href="#cb72-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># is_Straight is true when there are no repeated elements in "ranks" and the </span></span>
+<span id="cb72-37"><a href="#cb72-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># difference between the largest and the smallest number in "rank" is 4.</span></span>
+<span id="cb72-38"><a href="#cb72-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># e.g. 4, 5, 6, 7, 8</span></span>
+<span id="cb72-39"><a href="#cb72-39" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-40"><a href="#cb72-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for pairs, three of a kind, and four of a kind</span></span>
+<span id="cb72-41"><a href="#cb72-41" aria-hidden="true" tabindex="-1"></a>  rank_counts <span class="ot">&lt;-</span> <span class="fu">table</span>(ranks)</span>
+<span id="cb72-42"><a href="#cb72-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use table() to find the frequency of each elements in ranks</span></span>
+<span id="cb72-43"><a href="#cb72-43" aria-hidden="true" tabindex="-1"></a>  has_pair <span class="ot">&lt;-</span> <span class="fu">any</span>(rank_counts <span class="sc">==</span> <span class="dv">2</span>)</span>
+<span id="cb72-44"><a href="#cb72-44" aria-hidden="true" tabindex="-1"></a>    <span class="co"># any() returns a logical value if at least one value is true in its arguments,</span></span>
+<span id="cb72-45"><a href="#cb72-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># so has_pair is true if there are any elements in ranks with frequency equal 2</span></span>
+<span id="cb72-46"><a href="#cb72-46" aria-hidden="true" tabindex="-1"></a>  has_three_of_a_kind <span class="ot">&lt;-</span> <span class="fu">any</span>(rank_counts <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="cb72-47"><a href="#cb72-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># has_three_of_a_kind is true if there are any elements in ranks with frequency</span></span>
+<span id="cb72-48"><a href="#cb72-48" aria-hidden="true" tabindex="-1"></a>    <span class="co"># equals 3</span></span>
+<span id="cb72-49"><a href="#cb72-49" aria-hidden="true" tabindex="-1"></a>  has_four_of_a_kind <span class="ot">&lt;-</span> <span class="fu">any</span>(rank_counts <span class="sc">==</span> <span class="dv">4</span>)</span>
+<span id="cb72-50"><a href="#cb72-50" aria-hidden="true" tabindex="-1"></a>    <span class="co"># has_four_of_a_kind is true if there are any elements in ranks with frequency</span></span>
+<span id="cb72-51"><a href="#cb72-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># equals 4</span></span>
+<span id="cb72-52"><a href="#cb72-52" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-53"><a href="#cb72-53" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Determine the hand name</span></span>
+<span id="cb72-54"><a href="#cb72-54" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (is_flush <span class="sc">&amp;&amp;</span> is_straight) {</span>
+<span id="cb72-55"><a href="#cb72-55" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Hand name is "Straight Flush" when both is_flush and is_straight are true</span></span>
+<span id="cb72-56"><a href="#cb72-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Straight Flush"</span>)                            </span>
+<span id="cb72-57"><a href="#cb72-57" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (has_four_of_a_kind) {</span>
+<span id="cb72-58"><a href="#cb72-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Hand name is "Four of a Kind" when has_four_of_a_kind is true</span></span>
+<span id="cb72-59"><a href="#cb72-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Four of a Kind"</span>)                           </span>
+<span id="cb72-60"><a href="#cb72-60" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (has_three_of_a_kind <span class="sc">&amp;&amp;</span> has_pair) {</span>
+<span id="cb72-61"><a href="#cb72-61" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Hand name is "Full House" when has_three_of_a_kind and has_pair are true</span></span>
+<span id="cb72-62"><a href="#cb72-62" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Full House"</span>)                               </span>
+<span id="cb72-63"><a href="#cb72-63" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (is_flush) {</span>
+<span id="cb72-64"><a href="#cb72-64" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Hand name is "Flush" when is_flush is true</span></span>
+<span id="cb72-65"><a href="#cb72-65" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Flush"</span>)</span>
+<span id="cb72-66"><a href="#cb72-66" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (is_straight) {</span>
+<span id="cb72-67"><a href="#cb72-67" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Hand name is "Straight" when is_straight is true</span></span>
+<span id="cb72-68"><a href="#cb72-68" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Straight"</span>)</span>
+<span id="cb72-69"><a href="#cb72-69" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (has_three_of_a_kind) {</span>
+<span id="cb72-70"><a href="#cb72-70" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Hand name is "Three of a Kind" when has_three_of_a_kind is true</span></span>
+<span id="cb72-71"><a href="#cb72-71" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Three of a Kind"</span>)                          </span>
+<span id="cb72-72"><a href="#cb72-72" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">sum</span>(rank_counts <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">==</span> <span class="dv">2</span>) {</span>
+<span id="cb72-73"><a href="#cb72-73" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Hand name is "Two Pair"when there are at least 2 elements with frequency 2</span></span>
+<span id="cb72-74"><a href="#cb72-74" aria-hidden="true" tabindex="-1"></a>    <span class="co"># in rank</span></span>
+<span id="cb72-75"><a href="#cb72-75" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Two Pair"</span>)                                  </span>
+<span id="cb72-76"><a href="#cb72-76" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (has_pair) {</span>
+<span id="cb72-77"><a href="#cb72-77" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Hand name is "One Pair" when has_pair is true</span></span>
+<span id="cb72-78"><a href="#cb72-78" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"One Pair"</span>)</span>
+<span id="cb72-79"><a href="#cb72-79" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb72-80"><a href="#cb72-80" aria-hidden="true" tabindex="-1"></a>    <span class="co"># In other cases, the hand name is "High Card"</span></span>
+<span id="cb72-81"><a href="#cb72-81" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"High Card"</span>)                                                           </span>
+<span id="cb72-82"><a href="#cb72-82" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb72-83"><a href="#cb72-83" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  Function to simulate dealing a round of poker with a specified number of players</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>deal_poker_round <span class="ot">&lt;-</span> <span class="cf">function</span>(num_players) {</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a deck of cards</span></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rep() replicates the values in the given vector. There are 4 different suits</span></span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># and we want 13 cards for each suits in a deck, so each = 13.</span></span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>  suits <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Hearts"</span>, <span class="st">"Diamonds"</span>, <span class="st">"Clubs"</span>, <span class="st">"Spades"</span>), <span class="at">each =</span> <span class="dv">13</span>)</span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># In a deck, 2 to 10 are represented by numbers, and we want 4 cards for each</span></span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># number, so times = 4. The only difference between each and times here is the</span></span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># order of elements in the created vectors.</span></span>
+<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a>  ranks <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">times =</span> <span class="dv">4</span>)</span>
+<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># In a deck, "Jack", "Queen", "King", "Ace" are represented by characters. Add to</span></span>
+<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the deck here.</span></span>
+<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a>  ranks <span class="ot">&lt;-</span> <span class="fu">c</span>(ranks, <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Jack"</span>, <span class="st">"Queen"</span>, <span class="st">"King"</span>, <span class="st">"Ace"</span>), <span class="at">each =</span> <span class="dv">4</span>))</span>
+<span id="cb73-15"><a href="#cb73-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb73-16"><a href="#cb73-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Shuffle the deck; make sure all players do not always get consecutive ranks of</span></span>
+<span id="cb73-17"><a href="#cb73-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># card for each deal.</span></span>
+<span id="cb73-18"><a href="#cb73-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb73-19"><a href="#cb73-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a data frame to form the deck. Each card has a suit and a rank</span></span>
+<span id="cb73-20"><a href="#cb73-20" aria-hidden="true" tabindex="-1"></a>  deck <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Suit =</span> suits, <span class="at">Rank =</span> ranks)</span>
+<span id="cb73-21"><a href="#cb73-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># sample() generates a random permutation of the given data frame. The default</span></span>
+<span id="cb73-22"><a href="#cb73-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># size is the size of the data frame. We can see the code only changes the order</span></span>
+<span id="cb73-23"><a href="#cb73-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># of rows. nrow() gives the row number of deck. </span></span>
+<span id="cb73-24"><a href="#cb73-24" aria-hidden="true" tabindex="-1"></a>  deck <span class="ot">&lt;-</span> deck[<span class="fu">sample</span>(<span class="fu">nrow</span>(deck)), ]</span>
+<span id="cb73-25"><a href="#cb73-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb73-26"><a href="#cb73-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Deal cards to players</span></span>
+<span id="cb73-27"><a href="#cb73-27" aria-hidden="true" tabindex="-1"></a>  player_hands <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="at">length =</span> num_players)</span>
+<span id="cb73-28"><a href="#cb73-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># vector("list", ) creates an empty list for all players hands to be added. The</span></span>
+<span id="cb73-29"><a href="#cb73-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># length of the list is the number of players.</span></span>
+<span id="cb73-30"><a href="#cb73-30" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_players) {</span>
+<span id="cb73-31"><a href="#cb73-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a for loop to add each of the 5 cards for each player.</span></span>
+<span id="cb73-32"><a href="#cb73-32" aria-hidden="true" tabindex="-1"></a>    start <span class="ot">&lt;-</span> (i <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb73-33"><a href="#cb73-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set the starting card from the deck for each player by arithmetic   .</span></span>
+<span id="cb73-34"><a href="#cb73-34" aria-hidden="true" tabindex="-1"></a>    end <span class="ot">&lt;-</span> i <span class="sc">*</span> <span class="dv">5</span></span>
+<span id="cb73-35"><a href="#cb73-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set the ending card.</span></span>
+<span id="cb73-36"><a href="#cb73-36" aria-hidden="true" tabindex="-1"></a>    player_hands[[i]] <span class="ot">&lt;-</span> deck[start<span class="sc">:</span>end, ]</span>
+<span id="cb73-37"><a href="#cb73-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add the 5 cards row-by-row from start to end for each player to the list</span></span>
+<span id="cb73-38"><a href="#cb73-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># player_hands.</span></span>
+<span id="cb73-39"><a href="#cb73-39" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb73-40"><a href="#cb73-40" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb73-41"><a href="#cb73-41" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Identify and display each player's hand</span></span>
+<span id="cb73-42"><a href="#cb73-42" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_players) {</span>
+<span id="cb73-43"><a href="#cb73-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a for loop to identify and display each player's hand</span></span>
+<span id="cb73-44"><a href="#cb73-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"Player"</span>, i, <span class="st">"Hand:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb73-45"><a href="#cb73-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># \n means start the next text from a new line.</span></span>
+<span id="cb73-46"><a href="#cb73-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(player_hands[[i]])</span>
+<span id="cb73-47"><a href="#cb73-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Display each player's hand</span></span>
+<span id="cb73-48"><a href="#cb73-48" aria-hidden="true" tabindex="-1"></a>    hand_name <span class="ot">&lt;-</span> <span class="fu">identify_poker_hand</span>(player_hands[[i]]<span class="sc">$</span>Suit, </span>
+<span id="cb73-49"><a href="#cb73-49" aria-hidden="true" tabindex="-1"></a>                                     player_hands[[i]]<span class="sc">$</span>Rank)</span>
+<span id="cb73-50"><a href="#cb73-50" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Identify the name of each player's hand by using the first function</span></span>
+<span id="cb73-51"><a href="#cb73-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># identify_poker_hand()</span></span>
+<span id="cb73-52"><a href="#cb73-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"Hand Name:"</span>, hand_name, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb73-53"><a href="#cb73-53" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb73-54"><a href="#cb73-54" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="part-d-1" class="level2">
+<h2 class="anchored" data-anchor-id="part-d-1">Part d</h2>
+<p>Carry out some tests</p>
+<div class="cell">
+<details open="">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">7</span>)</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">deal_poker_round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Player 1 Hand:
+       Suit  Rank
+42   Spades Queen
+19 Diamonds     2
+31    Clubs     5
+28    Clubs     2
+39    Clubs  Jack
+Hand Name: One Pair 
+
+Player 2 Hand:
+       Suit Rank
+2    Hearts    3
+15 Diamonds    7
+26 Diamonds    9
+8    Hearts    9
+3    Hearts    4
+Hand Name: One Pair </code></pre>
+</div>
+<details open="">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deal_poker_round</span>(<span class="dv">11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Player 1 Hand:
+       Suit Rank
+24 Diamonds    7
+10   Hearts    2
+46   Spades King
+40   Spades Jack
+48   Spades King
+Hand Name: One Pair 
+
+Player 2 Hand:
+       Suit Rank
+23 Diamonds    6
+5    Hearts    6
+32    Clubs    6
+38    Clubs Jack
+3    Hearts    4
+Hand Name: Three of a Kind 
+
+Player 3 Hand:
+       Suit  Rank
+41   Spades Queen
+16 Diamonds     8
+8    Hearts     9
+28    Clubs     2
+42   Spades Queen
+Hand Name: One Pair 
+
+Player 4 Hand:
+       Suit Rank
+18 Diamonds   10
+29    Clubs    3
+51   Spades  Ace
+30    Clubs    4
+22 Diamonds    5
+Hand Name: High Card 
+
+Player 5 Hand:
+       Suit  Rank
+12   Hearts     4
+6    Hearts     7
+4    Hearts     5
+44   Spades Queen
+17 Diamonds     9
+Hand Name: High Card 
+
+Player 6 Hand:
+     Suit Rank
+11 Hearts    3
+13 Hearts    5
+45 Spades King
+47 Spades King
+52 Spades  Ace
+Hand Name: One Pair 
+
+Player 7 Hand:
+       Suit Rank
+37    Clubs Jack
+1    Hearts    2
+39    Clubs Jack
+21 Diamonds    4
+25 Diamonds    8
+Hand Name: One Pair 
+
+Player 8 Hand:
+     Suit Rank
+27  Clubs   10
+36  Clubs   10
+2  Hearts    3
+9  Hearts   10
+35  Clubs    9
+Hand Name: Three of a Kind 
+
+Player 9 Hand:
+       Suit Rank
+19 Diamonds    2
+49   Spades  Ace
+14 Diamonds    6
+26 Diamonds    9
+31    Clubs    5
+Hand Name: High Card 
+
+Player 10 Hand:
+       Suit  Rank
+34    Clubs     8
+20 Diamonds     3
+43   Spades Queen
+7    Hearts     8
+33    Clubs     7
+Hand Name: One Pair 
+
+Player 11 Hand:
+         Suit Rank
+15   Diamonds    7
+50     Spades  Ace
+NA       &lt;NA&gt; &lt;NA&gt;
+NA.1     &lt;NA&gt; &lt;NA&gt;
+NA.2     &lt;NA&gt; &lt;NA&gt;
+Hand Name: High Card </code></pre>
+</div>
+</div>
+<p><strong>Checklist:</strong></p>
+<ol type="1">
+<li>The inputs and outputs are as described in the question.</li>
+<li>Not all cards are valid as there are duplicates.</li>
+<li>Most of the names are correct, but when 10, “Jack”, “Queen”, “King”, and “Ace” show up, the code gives “High Card” instead of “Straight”. And the code does not give the name “Royal Flush”.</li>
+<li>It doesn’t. If there are more than 10 hands to be dealt, the 11th players only get 2 cards, and players after the 11th get no hands, which shows as NA in the outputs.</li>
+</ol>
+<p><strong>There are 3 problems:</strong></p>
+<ol type="1">
+<li><p>The hand name of 10, “Jack”, “Queen”, “King”, and “Ace” is not “Straight” but “High Card”.</p>
+<p>Bugs of identify_poker_hand(); Change rank “Ace” to integer 1, so when the code checks for a straight, 13 - 1 is not equal to 4. We can fix it by add some conditions for this arithmetic.</p></li>
+<li><p>The code does not give hand name “Royal Flush”.</p>
+<p>Bugs of identify_poker_hand(); Add a new checking condition would solve the problem.</p></li>
+</ol>
+<div class="cell">
+<details open="">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>identify_poker_hand <span class="ot">&lt;-</span> <span class="cf">function</span>(suits, ranks) {</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for a flush</span></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>  is_flush <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(suits)) <span class="sc">==</span> <span class="dv">1</span></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for a straight         </span></span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="st">'Ace'</span> <span class="sc">%in%</span> ranks){</span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">all</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="st">'Jack'</span>, <span class="st">'Queen'</span>, <span class="st">'King'</span>) <span class="sc">%in%</span> ranks)){</span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>      <span class="co"># all() returns true if the given logical vector has all of the values true</span></span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a>      ranks[ranks <span class="sc">==</span> <span class="st">'Ace'</span>] <span class="ot">&lt;-</span> <span class="dv">14</span></span>
+<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Set "Ace" as 9 so the difference the maximal and the minimal equals 4.</span></span>
+<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a>      ranks[ranks <span class="sc">==</span> <span class="st">'Ace'</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb78-13"><a href="#cb78-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb78-14"><a href="#cb78-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb78-15"><a href="#cb78-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="st">'Jack'</span> <span class="sc">%in%</span> ranks){</span>
+<span id="cb78-16"><a href="#cb78-16" aria-hidden="true" tabindex="-1"></a>    ranks[ranks <span class="sc">==</span> <span class="st">'Jack'</span>] <span class="ot">&lt;-</span> <span class="dv">11</span></span>
+<span id="cb78-17"><a href="#cb78-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb78-18"><a href="#cb78-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="st">'Queen'</span> <span class="sc">%in%</span> ranks){</span>
+<span id="cb78-19"><a href="#cb78-19" aria-hidden="true" tabindex="-1"></a>    ranks[ranks <span class="sc">==</span> <span class="st">'Queen'</span>] <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb78-20"><a href="#cb78-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb78-21"><a href="#cb78-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="st">'King'</span> <span class="sc">%in%</span> ranks){</span>
+<span id="cb78-22"><a href="#cb78-22" aria-hidden="true" tabindex="-1"></a>    ranks[ranks <span class="sc">==</span> <span class="st">'King'</span>] <span class="ot">&lt;-</span> <span class="dv">13</span></span>
+<span id="cb78-23"><a href="#cb78-23" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb78-24"><a href="#cb78-24" aria-hidden="true" tabindex="-1"></a>  ranks <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(ranks)    </span>
+<span id="cb78-25"><a href="#cb78-25" aria-hidden="true" tabindex="-1"></a>  is_straight <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(ranks)) <span class="sc">==</span> <span class="dv">5</span> <span class="sc">&amp;&amp;</span> (<span class="fu">max</span>(ranks) <span class="sc">-</span> <span class="fu">min</span>(ranks)) <span class="sc">==</span> <span class="dv">4</span></span>
+<span id="cb78-26"><a href="#cb78-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb78-27"><a href="#cb78-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for pairs, three of a kind, and four of a kind</span></span>
+<span id="cb78-28"><a href="#cb78-28" aria-hidden="true" tabindex="-1"></a>  rank_counts <span class="ot">&lt;-</span> <span class="fu">table</span>(ranks)</span>
+<span id="cb78-29"><a href="#cb78-29" aria-hidden="true" tabindex="-1"></a>  has_pair <span class="ot">&lt;-</span> <span class="fu">any</span>(rank_counts <span class="sc">==</span> <span class="dv">2</span>)</span>
+<span id="cb78-30"><a href="#cb78-30" aria-hidden="true" tabindex="-1"></a>  has_three_of_a_kind <span class="ot">&lt;-</span> <span class="fu">any</span>(rank_counts <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="cb78-31"><a href="#cb78-31" aria-hidden="true" tabindex="-1"></a>  has_four_of_a_kind <span class="ot">&lt;-</span> <span class="fu">any</span>(rank_counts <span class="sc">==</span> <span class="dv">4</span>)</span>
+<span id="cb78-32"><a href="#cb78-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb78-33"><a href="#cb78-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Determine the hand name</span></span>
+<span id="cb78-34"><a href="#cb78-34" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (is_flush <span class="sc">&amp;&amp;</span> is_straight) {</span>
+<span id="cb78-35"><a href="#cb78-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="dv">14</span> <span class="sc">%in%</span> ranks) {</span>
+<span id="cb78-36"><a href="#cb78-36" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(<span class="st">"Royal Flush"</span>)</span>
+<span id="cb78-37"><a href="#cb78-37" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb78-38"><a href="#cb78-38" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(<span class="st">"Straight Flush"</span>)</span>
+<span id="cb78-39"><a href="#cb78-39" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb78-40"><a href="#cb78-40" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (has_four_of_a_kind) {</span>
+<span id="cb78-41"><a href="#cb78-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Four of a Kind"</span>)</span>
+<span id="cb78-42"><a href="#cb78-42" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (has_three_of_a_kind <span class="sc">&amp;&amp;</span> has_pair) {</span>
+<span id="cb78-43"><a href="#cb78-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Full House"</span>)</span>
+<span id="cb78-44"><a href="#cb78-44" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (is_flush) {</span>
+<span id="cb78-45"><a href="#cb78-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Flush"</span>)</span>
+<span id="cb78-46"><a href="#cb78-46" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (is_straight) {</span>
+<span id="cb78-47"><a href="#cb78-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Straight"</span>)</span>
+<span id="cb78-48"><a href="#cb78-48" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (has_three_of_a_kind) {</span>
+<span id="cb78-49"><a href="#cb78-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Three of a Kind"</span>)</span>
+<span id="cb78-50"><a href="#cb78-50" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">sum</span>(rank_counts <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">==</span> <span class="dv">2</span>) {</span>
+<span id="cb78-51"><a href="#cb78-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Two Pair"</span>)</span>
+<span id="cb78-52"><a href="#cb78-52" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (has_pair) {</span>
+<span id="cb78-53"><a href="#cb78-53" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"One Pair"</span>)</span>
+<span id="cb78-54"><a href="#cb78-54" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb78-55"><a href="#cb78-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"High Card"</span>)</span>
+<span id="cb78-56"><a href="#cb78-56" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb78-57"><a href="#cb78-57" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Test after the bug is fixed.</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>test1_suits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Clubs'</span>, <span class="st">'Clubs'</span>, <span class="st">'Clubs'</span>, <span class="st">'Clubs'</span>, <span class="st">'Clubs'</span>)</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>test1_ranks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="st">'Jack'</span>, <span class="st">'Queen'</span>, <span class="st">'King'</span>, <span class="st">'Ace'</span>)</span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="fu">identify_poker_hand</span>(test1_suits, test1_ranks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Royal Flush"</code></pre>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>test2_suits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Hearts'</span>, <span class="st">'Clubs'</span>, <span class="st">'Clubs'</span>, <span class="st">'Clubs'</span>, <span class="st">'Clubs'</span>)</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>test2_ranks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="st">'Jack'</span>, <span class="st">'Queen'</span>, <span class="st">'King'</span>, <span class="st">'Ace'</span>)</span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="fu">identify_poker_hand</span>(test2_suits, test2_ranks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Straight"</code></pre>
+</div>
+</div>
+<p>We can see now “Straight” and “Royal Flush” can be correctly shown.</p>
+<ol start="3" type="1">
+<li>There are duplicates in the deck.</li>
+</ol>
+<p>Bugs of deal_poker_round(); The bug is caused by the wrong usage of arguments times and each in rep(), so the order is wrong to make each rank correspond to the 4 different suits. It can be fixed by adjust the use of these two arguments in rep() in the step of creating a deck of cards.</p>
+<div class="cell">
+<details open="">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>deal_poker_round <span class="ot">&lt;-</span> <span class="cf">function</span>(num_players) {</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a deck of cards</span></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>  suits <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Hearts"</span>, <span class="st">"Diamonds"</span>, <span class="st">"Clubs"</span>, <span class="st">"Spades"</span>), <span class="at">times =</span> <span class="dv">13</span>)</span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Each changed to times</span></span>
+<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb83-7"><a href="#cb83-7" aria-hidden="true" tabindex="-1"></a>  ranks <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">each =</span> <span class="dv">4</span>)</span>
+<span id="cb83-8"><a href="#cb83-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Times changed to each</span></span>
+<span id="cb83-9"><a href="#cb83-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb83-10"><a href="#cb83-10" aria-hidden="true" tabindex="-1"></a>  ranks <span class="ot">&lt;-</span> <span class="fu">c</span>(ranks, <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Jack"</span>, <span class="st">"Queen"</span>, <span class="st">"King"</span>, <span class="st">"Ace"</span>), <span class="at">each =</span> <span class="dv">4</span>))</span>
+<span id="cb83-11"><a href="#cb83-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb83-12"><a href="#cb83-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Shuffle the deck</span></span>
+<span id="cb83-13"><a href="#cb83-13" aria-hidden="true" tabindex="-1"></a>  deck <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Suit =</span> suits, <span class="at">Rank =</span> ranks)</span>
+<span id="cb83-14"><a href="#cb83-14" aria-hidden="true" tabindex="-1"></a>  deck <span class="ot">&lt;-</span> deck[<span class="fu">sample</span>(<span class="fu">nrow</span>(deck)), ]</span>
+<span id="cb83-15"><a href="#cb83-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb83-16"><a href="#cb83-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Deal cards to players</span></span>
+<span id="cb83-17"><a href="#cb83-17" aria-hidden="true" tabindex="-1"></a>  player_hands <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="at">length =</span> num_players)</span>
+<span id="cb83-18"><a href="#cb83-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_players) {</span>
+<span id="cb83-19"><a href="#cb83-19" aria-hidden="true" tabindex="-1"></a>    start <span class="ot">&lt;-</span> (i <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb83-20"><a href="#cb83-20" aria-hidden="true" tabindex="-1"></a>    end <span class="ot">&lt;-</span> i <span class="sc">*</span> <span class="dv">5</span></span>
+<span id="cb83-21"><a href="#cb83-21" aria-hidden="true" tabindex="-1"></a>    player_hands[[i]] <span class="ot">&lt;-</span> deck[start<span class="sc">:</span>end, ]</span>
+<span id="cb83-22"><a href="#cb83-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb83-23"><a href="#cb83-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb83-24"><a href="#cb83-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Identify and display each player's hand</span></span>
+<span id="cb83-25"><a href="#cb83-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_players) {</span>
+<span id="cb83-26"><a href="#cb83-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"Player"</span>, i, <span class="st">"Hand:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb83-27"><a href="#cb83-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(player_hands[[i]])</span>
+<span id="cb83-28"><a href="#cb83-28" aria-hidden="true" tabindex="-1"></a>    hand_name <span class="ot">&lt;-</span> <span class="fu">identify_poker_hand</span>(player_hands[[i]]<span class="sc">$</span>Suit, player_hands[[i]]<span class="sc">$</span>Rank)</span>
+<span id="cb83-29"><a href="#cb83-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"Hand Name:"</span>, hand_name, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb83-30"><a href="#cb83-30" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb83-31"><a href="#cb83-31" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Test after the bug is fixed.</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">7</span>)</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">deal_poker_round</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Player 1 Hand:
+       Suit  Rank
+42 Diamonds Queen
+19    Clubs     6
+31    Clubs     9
+28   Spades     8
+39    Clubs  Jack
+Hand Name: High Card 
+
+Player 2 Hand:
+       Suit Rank
+2  Diamonds    2
+15    Clubs    5
+26 Diamonds    8
+8    Spades    3
+3     Clubs    2
+Hand Name: One Pair 
+
+Player 3 Hand:
+       Suit  Rank
+24   Spades     7
+40   Spades  Jack
+22 Diamonds     7
+44   Spades Queen
+45   Hearts  King
+Hand Name: One Pair 
+
+Player 4 Hand:
+       Suit Rank
+12   Spades    4
+20   Spades    6
+50 Diamonds  Ace
+46 Diamonds King
+6  Diamonds    3
+Hand Name: High Card </code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deal_poker_round</span>(<span class="dv">11</span>)  <span class="co"># Check all cards by set 11 players</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Player 1 Hand:
+       Suit Rank
+24   Spades    7
+10 Diamonds    4
+46 Diamonds King
+40   Spades Jack
+48   Spades King
+Hand Name: One Pair 
+
+Player 2 Hand:
+       Suit Rank
+23    Clubs    7
+5    Hearts    3
+32   Spades    9
+38 Diamonds Jack
+3     Clubs    2
+Hand Name: High Card 
+
+Player 3 Hand:
+       Suit  Rank
+41   Hearts Queen
+16   Spades     5
+8    Spades     3
+28   Spades     8
+42 Diamonds Queen
+Hand Name: One Pair 
+
+Player 4 Hand:
+       Suit Rank
+18 Diamonds    6
+29   Hearts    9
+51    Clubs  Ace
+30 Diamonds    9
+22 Diamonds    7
+Hand Name: One Pair 
+
+Player 5 Hand:
+       Suit  Rank
+12   Spades     4
+6  Diamonds     3
+4    Spades     2
+44   Spades Queen
+17   Hearts     6
+Hand Name: High Card 
+
+Player 6 Hand:
+     Suit Rank
+11  Clubs    4
+13 Hearts    5
+45 Hearts King
+47  Clubs King
+52 Spades  Ace
+Hand Name: One Pair 
+
+Player 7 Hand:
+     Suit Rank
+37 Hearts Jack
+1  Hearts    2
+39  Clubs Jack
+21 Hearts    7
+25 Hearts    8
+Hand Name: One Pair 
+
+Player 8 Hand:
+       Suit Rank
+27    Clubs    8
+36   Spades   10
+2  Diamonds    2
+9    Hearts    4
+35    Clubs   10
+Hand Name: One Pair 
+
+Player 9 Hand:
+       Suit Rank
+19    Clubs    6
+49   Hearts  Ace
+14 Diamonds    5
+26 Diamonds    8
+31    Clubs    9
+Hand Name: High Card 
+
+Player 10 Hand:
+       Suit  Rank
+34 Diamonds    10
+20   Spades     6
+43    Clubs Queen
+7     Clubs     3
+33   Hearts    10
+Hand Name: One Pair 
+
+Player 11 Hand:
+         Suit Rank
+15      Clubs    5
+50   Diamonds  Ace
+NA       &lt;NA&gt; &lt;NA&gt;
+NA.1     &lt;NA&gt; &lt;NA&gt;
+NA.2     &lt;NA&gt; &lt;NA&gt;
+Hand Name: High Card </code></pre>
+</div>
+</div>
+<p>Now there are no duplicates in the deck.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
